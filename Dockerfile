@@ -1,6 +1,15 @@
-FROM jenkinsci/jnlp-slave:
+FROM java:8-jdk
 MAINTAINER Wuhui Zuo <wuhuizuo@126.com>
 
+############################# install jenkins-slave start ######################
+RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.52/remoting-2.52.jar \
+  && chmod 755 /usr/share/jenkins \
+  && chmod 644 /usr/share/jenkins/slave.jar
+
+COPY jenkins-slave /usr/local/bin/jenkins-slave
+############################# install jenkins-slave end ########################
+
+############################# install ruby start ###############################
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
 	&& { \
@@ -53,6 +62,10 @@ ENV BUNDLE_PATH="$GEM_HOME" \
 ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
+############################# install ruby end #################################
+
+ENV HOME /home/jenkins
+RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
