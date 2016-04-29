@@ -4,7 +4,7 @@ MAINTAINER Wuhui Zuo <wuhuizuo@126.com>
 ############################# install jenkins-slave start ######################
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-    openjdk-8-jre-headless \
+    openjdk-7-jre-headless \
     git \
     subversion \
     zip
