@@ -21,6 +21,6 @@ RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
-USER jenkins
+USER root
 
 ENTRYPOINT ["jenkins-slave"]
