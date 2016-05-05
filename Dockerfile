@@ -1,4 +1,4 @@
-FROM ruby:latest
+FROM daocloud.io/wuhuizuo/docker-ruby:latest
 MAINTAINER Wuhui Zuo <wuhuizuo@126.com>
 
 ############################# install jenkins-slave start ######################
@@ -21,6 +21,6 @@ RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
-USER root
+USER jenkins
 
 ENTRYPOINT ["jenkins-slave"]
