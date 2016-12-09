@@ -1,13 +1,7 @@
-FROM java:8-jdk
+FROM jenkinsci/jnlp-slave:2.52
 MAINTAINER Wuhui Zuo <wuhuizuo@126.com>
 
-############################# install jenkins-slave start ######################
-RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.52/remoting-2.52.jar \
-  && chmod 755 /usr/share/jenkins \
-  && chmod 644 /usr/share/jenkins/slave.jar
-
-COPY jenkins-slave /usr/local/bin/jenkins-slave
-############################# install jenkins-slave end ########################
+USER root
 
 ############################# install ruby start ###############################
 # skip installing gem documentation
@@ -26,13 +20,32 @@ ENV RUBYGEMS_VERSION 2.6.4
 # we purge this later to make sure our final image uses what we just built
 RUN set -ex \
 	&& buildDeps=' \
-		bison \
-		libgdbm-dev \
-		ruby \
+  autoconf \
+  automake \
+  bison \
+  build-essential \
+  libpq-dev \
+  libgdbm-dev \
+  ruby \
+  gawk \
+  g++ \
+  gcc \
+  make \
+  libtool \
+  bison \
+  pkg-config \
+  libreadline6-dev \
+  zlib1g-dev \
+  libssl-dev \
+  libyaml-dev \
+  libsqlite3-dev \
+  sqlite3 \
+  libgdbm-dev \
+  libncurses5-dev \
+  libffi-dev \
 	' \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $buildDeps \
-	&& rm -rf /var/lib/apt/lists/* \
 	&& curl -fSL -o ruby.tar.gz "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.gz" \
 	&& echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum -c - \
 	&& mkdir -p /usr/src/ruby \
@@ -45,6 +58,8 @@ RUN set -ex \
 	&& make -j"$(nproc)" \
 	&& make install \
 	&& apt-get purge -y --auto-remove $buildDeps \
+	&& apt-get install -y build-essential nodejs chromium xvfb libqt5webkit5-dev qt5-default libpq-dev libyaml-dev libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libgdbm-dev libncurses5-dev libffi-dev \
+	&& rm -rf /var/lib/apt/lists/* \
 	&& gem update --system $RUBYGEMS_VERSION \
 	&& rm -r /usr/src/ruby
 
@@ -65,7 +80,6 @@ RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 ############################# install ruby end #################################
 
 ENV HOME /home/jenkins
-RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
