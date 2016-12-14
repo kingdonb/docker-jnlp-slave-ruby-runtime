@@ -18,4 +18,3 @@ RUN cd /tmp/bundle && bundle install \
   && rm -rf /tmp/bundle/ \
   && cd /usr/local/bundle && rm -rf cache/*
 
-ENTRYPOINT ["jenkins-slave"]
