@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "chromedriver-helper"
+
 # ndwebgroup/nd_foundation
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
@@ -8,6 +10,9 @@ gem 'nd_foundation', git: 'https://github.com/ndwebgroup/nd_foundation'
 # dotenv gem for secrets in .env auto-loading
 gem 'dotenv'
 gem 'slim'
+
+gem 'cocoon'
+
 
 # Workflow / State Transitions
 gem 'workflow'
@@ -22,6 +27,7 @@ gem 'rack-cas'
 gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
+  gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -50,6 +56,9 @@ gem 'whenever', :require => false  # provides a clear syntax for writing and dep
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Specific version of nokogiri to support ruby < 2.1.0
+gem 'nokogiri', '~> 1.6.8'
 
 group :test do
   gem 'shoulda-matchers'
