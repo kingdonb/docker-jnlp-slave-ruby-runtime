@@ -14,6 +14,8 @@ USER jenkins
 
 RUN mkdir /tmp/bundle
 COPY Gemfile /tmp/bundle/
+COPY Gemfile.lock /tmp/bundle/
+RUN mkdir -p /tmp/bundle/vendor/gems/constant_cache-ar
 RUN cd /tmp/bundle && bundle install \
   && rm -rf /tmp/bundle/ \
   && cd /usr/local/bundle && rm -rf cache/*
