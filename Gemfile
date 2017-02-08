@@ -1,105 +1,69 @@
 source 'https://rubygems.org'
 
-gem 'dotenv'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
-gem 'railties', '4.1.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-gem 'ruby-plsql'
-gem 'activerecord-oracle_enhanced-adapter'
-
-#gem 'thin'
-gem 'pg'
-
-
+gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+# Use Unicorn as the app server
+gem 'unicorn'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
-
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer',  platforms: :ruby
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 1.2'
-gem 'oj', '~> 2.17'
-gem 'rabl'
-
-
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc',          group: :doc, require: false
-
-gem 'cocoon'
-gem 'carrierwave'
-gem 'workflow'
-
+gem 'jbuilder', '~> 2.5'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-gem 'unicorn'
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+end
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console'
+  gem 'listen', '~> 3.0.5'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Running our tests
+gem 'cucumber'
+#gem 'ruby-oci8'
+gem 'selenium-webdriver'
+gem 'poltergeist'
+gem 'rspec-expectations'
+gem 'dotenv'
+gem 'rake'
+gem 'phantomjs', :require => 'phantomjs/poltergeist'
 
-gem 'axlsx'
-gem 'axlsx_rails'
+#render markdown, '.md', files
+#http://stackoverflow.com/questions/4163560/how-can-i-automatically-render-partials-using-markdown-in-rails-3/10131299#10131299
+gem 'rdiscount'
 
-gem 'foundation-rails', '5.3.1.0'
-gem 'foundation-icons-sass-rails', '~> 3.0.0'
-gem 'rails-config'
+#CAS authentication
+gem 'rack-cas'
 
-gem 'certified', '~> 1.0.0'
+#Asyncronous job processing
+gem 'sucker_punch'
 
-#gem 'rubycas-client'
-
-gem 'american_date'
-
-gem 'activerecord-session_store'
-gem 'will_paginate'
-
-gem 'newrelic_rpm'
-
-gem 'whenever', :require => false  # provides a clear syntax for writing and deploying cron jobs
-gem 'persistent_httparty'
-
-gem 'country_select'
-
-group :development, :test do
-	gem 'rspec-rails',"~> 3.1"
-	gem 'factory_girl_rails',"~> 4.0"
-  	gem 'brakeman', :require => false
-    gem 'rspec-mocks'
-    gem 'shoulda-matchers'
-    gem 'cucumber-rails', require: false
-	gem 'database_cleaner'
-	gem 'selenium-webdriver'
-#	gem 'capybara'
-#	gem 'factory_girl_rails'
-end
-
-group :test do
-	gem 'simplecov', require: false
-end
-
-gem 'que'
+#allowing download of zipped results
+gem 'rubyzip'
