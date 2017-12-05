@@ -8,12 +8,17 @@ gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'nd_foundation', git: 'https://github.com/ndwebgroup/nd_foundation'
 
+# rest-client for RESTful resources
+gem 'rest-client'
+
 # font-awesome assets in rails pipeline
 gem 'font-awesome-rails'
 
 # dotenv gem for secrets in .env auto-loading
 gem 'dotenv'
 gem 'slim'
+
+gem 'webservices', git: 'https://github.com/rdelossa/webservices.git'
 
 gem 'cocoon'
 # gem 'nd_application_workflow', path: '~/projects/nd-application-workflow'
@@ -90,6 +95,7 @@ group :test do
   # code coverage analysis
   gem 'simplecov', :require => false
   gem 'timecop'
+  gem 'whenever-test'
 end
 
 group :development, :test do
@@ -112,4 +118,5 @@ group :development do
   gem 'rubocop', require: false
   gem 'pre-commit', require: false
   gem 'db_fixtures_dump', git: 'https://github.com/thams/db_fixtures_dump.git'
+  gem 'rails-erd'
 end
