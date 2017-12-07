@@ -157,6 +157,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
+    js_assets (0.1.2)
+      rails
+      sprockets (>= 3.0)
     json (1.8.6)
     kgio (2.9.3)
     libv8 (3.16.14.19)
@@ -342,6 +345,7 @@ DEPENDENCIES
   foundation-rails (~> 5.4.3.1)
   jquery-rails (~> 4.2.1)
   jquery-ui-rails
+  js_assets
   newrelic_rpm
   nokogiri (~> 1.6.8)
   oj (~> 2.17)
@@ -373,4 +377,4 @@ DEPENDENCIES
   workflow
 
 BUNDLED WITH
-   1.15.1
+   1.16.0
