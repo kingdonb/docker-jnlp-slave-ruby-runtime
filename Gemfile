@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
-gem "chromedriver-helper"
-#gem 'awesome_print', require: 'ap'
+ruby '2.3.5'
+
+gem 'awesome_print', require: 'ap'
+gem 'chromedriver-helper'
+
+gem 'tzinfo-data'
 
 # ndwebgroup/nd_foundation
-gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+gem 'foundation-rails'
 gem 'nd_foundation', git: 'https://github.com/ndwebgroup/nd_foundation'
 
 # rest-client for RESTful resources
@@ -34,22 +38,21 @@ gem 'will_paginate'
 gem 'will_paginate-foundation', '~> 5.3.4'
 # ClientSideValidations
 # gem 'client_side_validations'
-gem 'validates_timeliness'
 gem 'american_date'
 gem 'maskedinput-rails'
+gem 'validates_timeliness'
 # SSO with CAS via rack-cas middleware
 gem 'rack-cas'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7.1'
+gem 'rails', '4.2.9'
 # Use postgresql as the database for Active Record
 gem 'pg'
-  gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 # Use js_assets gem for getting assets paths within JavaScript assets
 gem 'js_assets'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -70,7 +73,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 gem 'unicorn'
-gem 'whenever', :require => false  # provides a clear syntax for writing and deploying cron jobs
+gem 'whenever', require: false # provides a clear syntax for writing and deploying cron jobs
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -78,22 +81,19 @@ gem 'whenever', :require => false  # provides a clear syntax for writing and dep
 # Use CarrierWave to support file uploads
 gem 'carrierwave', '~> 1.0'
 
-# Specific version of nokogiri to support ruby < 2.1.0
-gem 'nokogiri', '~> 1.6.8'
-
 group :test do
-  gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
   gem 'email_spec'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   # gem 'capybara-webkit', git: 'git@github.com:kingdonb/capybara-webkit.git'
   # gem 'headless'
   # gem 'poltergeist'
   # gem 'phantomjs', require: 'phantomjs/poltergeist'
 
   # code coverage analysis
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'timecop'
   gem 'whenever-test'
 end
@@ -101,12 +101,13 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'rspec-html-matchers'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
-  gem 'factory_girl_rails'
-  #gem 'pry'
   gem 'schema_to_scaffold'
-  gem 'webmock'
+  gem 'webmock', git: 'https://github.com/kingdonb/webmock.git'
 end
 
 group :development do
@@ -114,9 +115,10 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'rubocop', require: false
-  gem 'pre-commit', require: false
   gem 'db_fixtures_dump', git: 'https://github.com/thams/db_fixtures_dump.git'
+  gem 'pre-commit', require: false
   gem 'rails-erd'
+  gem 'rails_12factor'
+  gem 'rubocop', require: false
+  gem 'spring'
 end
