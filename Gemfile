@@ -32,7 +32,7 @@ gem 'activeresource', require: 'active_resource'
 # Workflow / State Transitions
 gem 'workflow'
 # Table Filters
-gem 'filterrific'
+gem 'filterrific', '~> 4.0'
 # Pagination
 gem 'will_paginate'
 gem 'will_paginate-foundation', '~> 5.3.4'
@@ -46,7 +46,7 @@ gem 'rack-cas'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.9'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.21'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -81,6 +81,17 @@ gem 'whenever', require: false # provides a clear syntax for writing and deployi
 # Use CarrierWave to support file uploads
 gem 'carrierwave', '~> 1.0'
 
+# Use ".to_dot" to give dot-access semantic to a Hash
+gem 'hash_dot'
+
+# Use for getting account status from ND directory
+gem 'net-ldap'
+
+group :development, :staging, :production do
+  # Make our app play nice with 12 factor methodology
+  gem 'rails_12factor'
+end
+
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
@@ -96,6 +107,9 @@ group :test do
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'whenever-test'
+
+  # use codecov to track code coverage over time
+  gem 'codecov', require: false
 end
 
 group :development, :test do
@@ -118,7 +132,6 @@ group :development do
   gem 'db_fixtures_dump', git: 'https://github.com/thams/db_fixtures_dump.git'
   gem 'pre-commit', require: false
   gem 'rails-erd'
-  gem 'rails_12factor'
   gem 'rubocop', require: false
   gem 'spring'
 end
