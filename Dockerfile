@@ -8,7 +8,7 @@ RUN set -ex \
 
 RUN set -ex \
         && apt-get update \
-        && apt-get install -y libxss1 libappindicator1 libindicator7 libgtk-3-0 fonts-liberation xdg-utils gconf-service libgconf-2-4 lsb-release \
+        && apt-get install -y libxss1 libappindicator3-1 libindicator7 libgtk-3-0 fonts-liberation xdg-utils gconf-service libgconf-2-4 lsb-release \
         && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
         && dpkg -i google-chrome-stable_current_amd64.deb \
         && rm -rf /var/lib/apt/lists/*
