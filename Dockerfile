@@ -19,11 +19,13 @@ ENV HOME /home/jenkins
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
-USER jenkins
 
 RUN mkdir /tmp/bundle
 COPY Gemfile /tmp/bundle/
 COPY Gemfile.lock /tmp/bundle/
+RUN chown jenkins /tmp/bundle/Gemfile.lock && chown jenkins /tmp/bundle
+USER jenkins
+
 RUN mkdir -p /tmp/bundle/vendor/gems/constant_cache-ar
 RUN cd /tmp/bundle && bundle install \
   && rm -rf /tmp/bundle/ \
