@@ -1,4 +1,4 @@
-FROM yebyen/jenkins-ruby-slave-base
+FROM yebyen/jenkins-ruby-slave-base:v2.3.6
 MAINTAINER Kingdon Barrett <kingdon.b@nd.edu>
 
 RUN set -ex \
