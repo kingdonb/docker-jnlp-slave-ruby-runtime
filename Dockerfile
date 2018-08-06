@@ -11,8 +11,22 @@ RUN set -ex \
         && apt-get install -y libxss1 libappindicator3-1 libindicator7 libgtk-3-0 fonts-liberation xdg-utils gconf-service libgconf-2-4 lsb-release \
         && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
         && dpkg -i google-chrome-stable_current_amd64.deb \
+        && apt-get install -y unzip libaio-dev \
         && rm -rf /var/lib/apt/lists/*
 
+COPY ora-support/*.zip /
+COPY ora-support/tns /etc/oracle
+RUN set -ex \
+	&& mkdir -p /opt/oracle \
+	&& cd /opt/oracle \
+	&& unzip /instantclient-basiclite-linux.x64-12.2.0.1.0.zip \
+	&& unzip /instantclient-sdk-linux.x64-12.2.0.1.0.zip \
+	&& unzip /instantclient-sqlplus-linux.x64-12.2.0.1.0.zip \
+	&& cd /opt/oracle/instantclient_12_2 \
+	&& ln -s libclntsh.so.12.1 libclntsh.so
+
+ENV LD_LIBRARY_PATH /opt/oracle/instantclient_12_2
+ENV TNS_ADMIN /etc/oracle
 ENV HOME /home/jenkins
 
 VOLUME /home/jenkins
