@@ -9,7 +9,7 @@ gem 'dotenv-rails'
 gem 'rest-client'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '5.2.0'
 # Use oracle as the database for Active Record
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'ruby-oci8', require: 'oci8'
