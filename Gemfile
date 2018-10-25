@@ -1,137 +1,70 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.5'
 
-gem 'awesome_print', require: 'ap'
-gem 'chromedriver-helper'
+# manage secrets with dotenv
+gem 'dotenv-rails'
 
-gem 'tzinfo-data'
-
-# ndwebgroup/nd_foundation
-gem 'foundation-icons-sass-rails'
-gem 'foundation-rails'
-gem 'nd_foundation', git: 'https://github.com/ndwebgroup/nd_foundation'
-
-# rest-client for RESTful resources
 gem 'rest-client'
 
-# font-awesome assets in rails pipeline
-gem 'font-awesome-rails'
-
-# dotenv gem for secrets in .env auto-loading
-gem 'dotenv'
-gem 'slim'
-
-gem 'webservices', git: 'https://github.com/rdelossa/webservices.git'
-
-gem 'cocoon'
-# gem 'nd_application_workflow', path: '~/projects/nd-application-workflow'
-
-# active resource for updating Banner data via APIs
-gem 'activeresource', require: 'active_resource'
-# Workflow / State Transitions
-gem 'workflow'
-# Table Filters
-gem 'filterrific', '~> 4.0'
-# Pagination
-gem 'will_paginate'
-gem 'will_paginate-foundation', '~> 5.3.4'
-# ClientSideValidations
-# gem 'client_side_validations'
-gem 'american_date'
-gem 'maskedinput-rails'
-gem 'validates_timeliness'
-# SSO with CAS via rack-cas middleware
-gem 'rack-cas'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.9'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 0.21'
+gem 'rails', '~> 5.2.0'
+# Use oracle as the database for Active Record
+gem 'activerecord-oracle_enhanced-adapter'
+gem 'ruby-oci8', require: 'oci8'
+gem 'ruby-plsql'
+gem 'composite_primary_keys'
+# Use Puma as the app server
+gem 'puma', '~> 3.11'
+gem 'unicorn'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
-# Use js_assets gem for getting assets paths within JavaScript assets
-gem 'js_assets'
+gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'mini_racer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'jbuilder', '~> 2.5'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-gem 'unicorn'
-gem 'whenever', require: false # provides a clear syntax for writing and deploying cron jobs
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use CarrierWave to support file uploads
-gem 'carrierwave', '~> 1.0'
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
 
-# Use ".to_dot" to give dot-access semantic to a Hash
-gem 'hash_dot'
-
-# Use for getting account status from ND directory
-gem 'net-ldap'
-
-group :development, :staging, :production do
-  # Make our app play nice with 12 factor methodology
-  gem 'rails_12factor'
+group :development, :test do
+  gem 'pry-rails'
+  gem 'awesome_print', require: 'ap'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
-  gem 'email_spec'
-  gem 'selenium-webdriver'
-  gem 'shoulda-matchers'
-  # gem 'capybara-webkit', git: 'git@github.com:kingdonb/capybara-webkit.git'
-  # gem 'headless'
-  # gem 'poltergeist'
-  # gem 'phantomjs', require: 'phantomjs/poltergeist'
-
-  # code coverage analysis
-  gem 'simplecov', require: false
-  gem 'timecop'
-  gem 'whenever-test'
-
-  # use codecov to track code coverage over time
-  gem 'codecov', require: false
-end
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'factory_bot_rails'
-  gem 'pry'
-  gem 'rspec-html-matchers'
-  gem 'rspec-rails'
-  gem 'rspec_junit_formatter'
-  gem 'schema_to_scaffold'
-  gem 'webmock', git: 'https://github.com/kingdonb/webmock.git'
+  gem 'pg' # postgresql for easier local testing
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'therubyracer', platforms: :ruby
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'db_fixtures_dump', git: 'https://github.com/thams/db_fixtures_dump.git'
-  gem 'pre-commit', require: false
-  gem 'rails-erd'
-  gem 'rubocop', require: false
-  gem 'spring'
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
