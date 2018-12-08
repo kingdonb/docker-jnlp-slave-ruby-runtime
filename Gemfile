@@ -9,13 +9,13 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'slim-rails'
 
-gem 'rest-client'
-
 # manage javascript assets with Webpack
 gem 'webpacker', '~> 3.5'
 
 # manage secrets with dotenv
 gem 'dotenv-rails'
+
+gem 'rest-client'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -66,11 +66,12 @@ gem 'rack-cas'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'rspec_junit_formatter'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'pry-rails'
+  gem 'awesome_print', require: 'ap'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
