@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 NVM_VERSION='v0.33.11'
 NODE_VERSION='v11.4.0'
 
