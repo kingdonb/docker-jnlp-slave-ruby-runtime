@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 NVM_VERSION='v0.33.11'
-NODE_VERSION='v11.0.0'
+NODE_VERSION='v11.4.0'
 
 if [ -f ~/.nvm/nvm.sh ]; then
   .  ~/.nvm/nvm.sh
