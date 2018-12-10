@@ -39,4 +39,7 @@ RUN cd /tmp/bundle && bundle install \
   && rm -rf /tmp/bundle/ \
   && cd /usr/local/bundle && rm -rf cache/*
 
+COPY install-yarn.sh /tmp
+RUN /tmp/install-yarn.sh
+
 ENTRYPOINT ["jenkins-slave"]

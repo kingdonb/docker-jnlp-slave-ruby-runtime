@@ -52,7 +52,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #Use for local dev without nodejs
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 
 # Use ".to_dot" to give dot-access semantic to a Hash
 gem 'hash_dot'
@@ -89,6 +89,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # Code coverage with simplecov
+  gem 'simplecov', require: false
+  # Simplified testing of idiomatic rails patterns
   gem 'shoulda-matchers'
 end
 
