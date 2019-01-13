@@ -30,7 +30,7 @@ gem 'cocoon'
 # active resource for updating Banner data via APIs
 gem 'activeresource', require: 'active_resource'
 # Workflow / State Transitions
-gem 'workflow'
+gem 'workflow', '~> 1.0'
 # Table Filters
 gem 'filterrific', '~> 4.0'
 # Pagination
@@ -44,7 +44,7 @@ gem 'validates_timeliness'
 # SSO with CAS via rack-cas middleware
 gem 'rack-cas'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.9'
+gem 'rails', '~> 4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.21'
 # Use SCSS for stylesheets
@@ -133,5 +133,6 @@ group :development do
   gem 'pre-commit', require: false
   gem 'rails-erd'
   gem 'rubocop', require: false
+  gem 'rubocop-rspec'
   gem 'spring'
 end
