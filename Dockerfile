@@ -14,6 +14,14 @@ RUN set -ex \
         && apt-get install -y unzip libaio-dev \
         && rm -rf /var/lib/apt/lists/*
 
+RUN set -ex \
+	&& cd /tmp \
+	&& wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.18.2/snowflake-odbc-2.18.2.x86_64.deb \
+	&& apt-get update \
+	&& apt-get install -y unixodbc unixodbc-dev \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& dpkg -i snowflake-odbc-2.18.2.x86_64.deb
+
 COPY ora-support/*.zip /
 COPY ora-support/tns /etc/oracle
 RUN set -ex \
