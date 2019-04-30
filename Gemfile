@@ -40,6 +40,8 @@ gem 'will_paginate-foundation', '~> 5.3.4'
 # ClientSideValidations
 # gem 'client_side_validations'
 gem 'american_date'
+# provides a helper to list countries in select
+gem 'country_select'
 gem 'maskedinput-rails'
 gem 'validates_timeliness'
 # SSO with CAS via rack-cas middleware
@@ -68,6 +70,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Use Swagger for API documentation
+gem 'swagger-blocks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -134,6 +139,7 @@ group :development do
   gem 'pre-commit', require: false
   gem 'rails-erd'
   gem 'rubocop', require: false
+  gem 'rubocop-performance'
   gem 'rubocop-rspec'
   gem 'spring'
 end
