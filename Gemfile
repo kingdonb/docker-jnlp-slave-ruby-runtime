@@ -9,8 +9,9 @@ gem 'tzinfo-data'
 
 # ndwebgroup/nd_foundation
 gem 'foundation-icons-sass-rails'
-gem 'foundation-rails'
-gem 'nd_foundation', git: 'https://github.com/ndwebgroup/nd_foundation'
+gem 'foundation-rails', '~> 5.4.3.0'
+gem 'nd_foundation', git: 'https://github.com/kingdonb/nd_foundation', branch: 'release-0.5'
+#gem 'nd_foundation', path: '~/projects/nd_api/nd_foundation'
 
 # rest-client for RESTful resources
 gem 'rest-client'
@@ -22,10 +23,10 @@ gem 'font-awesome-rails'
 gem 'dotenv'
 gem 'slim'
 
-gem 'webservices', git: 'https://github.com/rdelossa/webservices.git'
+gem 'webservices', git: 'https://github.com/kingdonb/webservices.git'
 
 gem 'cocoon'
-# gem 'nd_application_workflow', path: '~/projects/nd-application-workflow'
+# gem 'nd_application_workflow', '~> 0.5.0', git: 'git@bitbucket.org:nd-oit/nd-application-workflow.git', branch: 'release-0.5'
 # gem 'nd_foapal_gem', path: '~/projects/nd_api/nd_foapal_gem'
 
 # active resource for updating Banner data via APIs
@@ -33,7 +34,7 @@ gem 'activeresource', require: 'active_resource'
 # Workflow / State Transitions
 gem 'workflow', '~> 1.0'
 # Table Filters
-gem 'filterrific', '~> 4.0'
+gem 'filterrific', '~> 5.0'
 # Pagination
 gem 'will_paginate'
 gem 'will_paginate-foundation', '~> 5.3.4'
@@ -47,9 +48,9 @@ gem 'validates_timeliness'
 # SSO with CAS via rack-cas middleware
 gem 'rack-cas'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -116,6 +117,9 @@ group :test do
 
   # use codecov to track code coverage over time
   gem 'codecov', require: false
+
+  # assert_template has been extracted to a gem. To continue using it, add:
+  gem 'rails-controller-testing'
 end
 
 group :development, :test do
@@ -139,6 +143,7 @@ group :development do
   gem 'pre-commit', require: false
   gem 'rails-erd'
   gem 'rubocop', require: false
+  gem 'rubocop-rails'
   gem 'rubocop-performance'
   gem 'rubocop-rspec'
   gem 'spring'
