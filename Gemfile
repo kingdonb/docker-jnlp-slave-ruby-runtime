@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.6.0'
+ruby '2.6.5'
 
 gem 'awesome_print', require: 'ap'
-gem 'chromedriver-helper'
+gem 'webdrivers'
 
 gem 'tzinfo-data'
 
@@ -45,10 +45,12 @@ gem 'american_date'
 gem 'country_select'
 gem 'maskedinput-rails'
 gem 'validates_timeliness'
-# SSO with CAS via rack-cas middleware
-gem 'rack-cas'
+# SSO with Okta (OAuth)
+gem 'jwt'
+gem 'http'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.0'
 # Use SCSS for stylesheets
@@ -136,7 +138,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'db_fixtures_dump', git: 'https://github.com/thams/db_fixtures_dump.git'
