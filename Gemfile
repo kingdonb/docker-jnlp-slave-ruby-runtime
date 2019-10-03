@@ -1,152 +1,102 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.4.9'
 
-gem 'awesome_print', require: 'ap'
-gem 'webdrivers'
-
-gem 'tzinfo-data'
-
-# ndwebgroup/nd_foundation
-gem 'foundation-icons-sass-rails'
-gem 'foundation-rails', '~> 5.4.3.0'
-gem 'nd_foundation', git: 'https://github.com/kingdonb/nd_foundation', branch: 'release-0.5'
-#gem 'nd_foundation', path: '~/projects/nd_api/nd_foundation'
-
-# rest-client for RESTful resources
-gem 'rest-client'
-
-# font-awesome assets in rails pipeline
-gem 'font-awesome-rails'
-
-# dotenv gem for secrets in .env auto-loading
-gem 'dotenv'
-gem 'slim'
-
-gem 'webservices', git: 'https://github.com/kingdonb/webservices.git'
-
-gem 'cocoon'
-# gem 'nd_application_workflow', '~> 0.5.0', git: 'git@bitbucket.org:nd-oit/nd-application-workflow.git', branch: 'release-0.5'
-# gem 'nd_foapal_gem', path: '~/projects/nd_api/nd_foapal_gem'
-
-# active resource for updating Banner data via APIs
-gem 'activeresource', require: 'active_resource'
-# Workflow / State Transitions
-gem 'workflow', '~> 1.0'
-# Table Filters
-gem 'filterrific', '~> 5.0'
-# Pagination
-gem 'will_paginate'
-gem 'will_paginate-foundation', '~> 5.3.4'
-# ClientSideValidations
-# gem 'client_side_validations'
-gem 'american_date'
-# provides a helper to list countries in select
-gem 'country_select'
-gem 'maskedinput-rails'
-gem 'validates_timeliness'
-# SSO with Okta (OAuth)
+# Okta Authentication
 gem 'jwt'
 gem 'http'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 1.0'
-# Use SCSS for stylesheets
-gem 'sass-rails'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
-# Use js_assets gem for getting assets paths within JavaScript assets
-gem 'js_assets'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
+gem 'foundation-rails'
+gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'slim-rails'
+
+# manage javascript assets with Webpack
+gem 'webpacker', '~> 3.5'
+
+# manage secrets with dotenv
+gem 'dotenv-rails'
+
+gem 'rest-client'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.2.0'
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
+# Use Puma as the app server
+gem 'puma', '~> 3.11'
+gem 'unicorn'
+# Use SCSS for stylesheets
+gem 'sassc-rails'
+# Use sprockets with es6
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+# gem 'mini_racer', platforms: :ruby
+
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use Swagger for API documentation
-gem 'swagger-blocks'
-
+gem 'jbuilder', '~> 2.5'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-gem 'unicorn'
-gem 'whenever', require: false # provides a clear syntax for writing and deploying cron jobs
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use CarrierWave to support file uploads
-gem 'carrierwave', '~> 1.0'
+#Use for local dev without nodejs
+gem 'mini_racer', '~> 0.2.6', platforms: :ruby
 
 # Use ".to_dot" to give dot-access semantic to a Hash
 gem 'hash_dot'
 
-# Use for getting account status from ND directory
-gem 'net-ldap'
-
-group :development, :staging, :production do
-  # Make our app play nice with 12 factor methodology
-  gem 'rails_12factor'
-end
-
-group :test do
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
-  gem 'email_spec'
-  gem 'selenium-webdriver'
-  gem 'shoulda-matchers'
-  # gem 'capybara-webkit', git: 'git@github.com:kingdonb/capybara-webkit.git'
-  # gem 'headless'
-  # gem 'poltergeist'
-  # gem 'phantomjs', require: 'phantomjs/poltergeist'
-
-  # code coverage analysis
-  gem 'simplecov', require: false
-  gem 'timecop'
-  gem 'whenever-test'
-
-  # use codecov to track code coverage over time
-  gem 'codecov', require: false
-
-  # assert_template has been extracted to a gem. To continue using it, add:
-  gem 'rails-controller-testing'
-end
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails-controller-testing'
   gem 'factory_bot_rails'
-  gem 'pry'
-  gem 'rspec-html-matchers'
-  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'awesome_print', require: 'ap'
+  gem 'rspec-rails', '~> 3.8'
   gem 'rspec_junit_formatter'
-  gem 'schema_to_scaffold'
-  gem 'webmock', git: 'https://github.com/kingdonb/webmock.git'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
-
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'db_fixtures_dump', git: 'https://github.com/thams/db_fixtures_dump.git'
-  gem 'pre-commit', require: false
-  gem 'rails-erd'
-  gem 'rubocop', require: false
-  gem 'rubocop-rails'
-  gem 'rubocop-performance'
-  gem 'rubocop-rspec'
   gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
+  # Code coverage with simplecov
+  gem 'simplecov', require: false
+  # Simplified testing of idiomatic rails patterns
+  gem 'shoulda-matchers'
+  # use codecov to track code coverage over time
+  gem 'codecov', require: false
+end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
