@@ -75,9 +75,9 @@ gem 'jbuilder'
 # gem 'capistrano-rails', group: :development
 
 #Use for local dev without nodejs
-gem 'therubyracer', platforms: :ruby
+#gem 'therubyracer', platforms: :ruby
 gem 'mini_racer', platforms: :ruby
-gem 'libv8', '~> 3.11.8'
+#gem 'libv8', '~> 3.11.8'
 
 # Use ".to_dot" to give dot-access semantic to a Hash
 gem 'hash_dot'
